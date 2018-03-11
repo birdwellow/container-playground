@@ -10,5 +10,6 @@
 
     <modules>
         <module>spring-boot-service</module>
+        <module>angular-service</module>
     </modules>
 </project>
