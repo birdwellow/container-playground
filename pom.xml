@@ -8,6 +8,8 @@
 
     <name>Container Playground</name>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>spring-boot-service</module>
         <module>angular-service</module>
