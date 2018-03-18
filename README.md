@@ -4,7 +4,7 @@ Playground project to play around with a cluster of containers.
 The cluster will include containers from custom and public images:
 * Custom:
     * Spring Boot 2
-    * Angular 4
+    * Angular 5
     * Node Express (TBD)
 * Public:
     * Kafka (& Zookeeper)
@@ -16,7 +16,7 @@ The cluster nodes & components should interact reactively with each other (see h
 * JDK 8
 * Maven
 * Node & NPM
-* Anular CLI
+* Anular CLI (> 1.5, to support Angular 5)
 * Docker & Docker-Composer
 
 ## To be done:
