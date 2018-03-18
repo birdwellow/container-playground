@@ -11,7 +11,14 @@ The cluster will include containers from custom and public images:
     * MongoDB
     
 The cluster nodes & components should interact reactively with each other (see https://www.reactivemanifesto.org/).
-    
+
+## Requirements for local development & build
+* JDK 8
+* Maven
+* Node & NPM
+* Anular CLI
+* Docker & Docker-Composer
+
 ## To be done:
 * Define a functional purpose for the cluster. Ideas:
     * Chat
