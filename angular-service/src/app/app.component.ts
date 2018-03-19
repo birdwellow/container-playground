@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {TravelOffer} from "./traveloffer.model";
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,15 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
-
-  }
-
-  ngOnInit(): void {
-    this.http.get('http://localhost:8080/snippets').subscribe(data => {
-      console.log(data);
-    });
-  }
-
   title = 'app';
 
+  travelOffers: Array<TravelOffer> = [];
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.http.get('http://localhost:8080/traveloffers').subscribe((travelOffers: Array<TravelOffer>) => {
+      this.travelOffers = travelOffers;
+    })
+  }
 }

@@ -6,10 +6,13 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
+import { Traveloffer } from './traveloffer.thumbnail/traveloffer.thumbnail.component';
+import { TravelOfferThumbnailComponent } from './travel-offer-thumbnail/travel-offer-thumbnail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TravelOfferThumbnailComponent
   ],
   imports: [
     NgbModule.forRoot(),

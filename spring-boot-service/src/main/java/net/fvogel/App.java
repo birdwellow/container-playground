@@ -27,8 +27,8 @@ public class App {
         travelOfferRepository.save(createTravelOffer(
                 10,
                 7899,
-                new Date(2018, 7, 13),
-                new Date(2018, 7, 22),
+                new Date(118, 7, 13),
+                new Date(118, 7, 22),
                 "Rome",
                 "Italy",
                 "Villa Garibaldi"
@@ -37,8 +37,8 @@ public class App {
         travelOfferRepository.save(createTravelOffer(
                 24,
                 5999,
-                new Date(2018, 9, 2),
-                new Date(2018, 9, 16),
+                new Date(118, 9, 2),
+                new Date(118, 9, 16),
                 "Luxor",
                 "Egypt",
                 "Grand Resort"

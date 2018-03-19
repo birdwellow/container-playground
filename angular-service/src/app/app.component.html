@@ -1,28 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <h3 class="masthead-brand">{{ title }}</h3>
+      <h3 class="masthead-brand">Travel Offers</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link active" href="#">Overview</a>
+        <a class="nav-link" href="#">Search</a>
+        <a class="nav-link" href="#">Info</a>
       </nav>
     </div>
   </header>
 
   <main role="main" class="inner cover">
     <h1 class="cover-heading">Cover your page.</h1>
+    <travel-offer-thumbnail class="lead" *ngFor="let travelOffer of travelOffers" [value]="travelOffer"></travel-offer-thumbnail>
     <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
+    <!--<p class="lead">-->
+      <!--<a href="#" class="btn btn-lg btn-secondary">Learn more</a>-->
+    <!--</p>-->
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>Travel Offers&copy; by <a href="https://fvogel.net/">birdwellow</a>.</p>
     </div>
   </footer>
 </div>
