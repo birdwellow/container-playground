@@ -35,6 +35,16 @@ public class App {
         ));
 
         travelOfferRepository.save(createTravelOffer(
+                1,
+                13899,
+                new Date(118, 7, 13),
+                new Date(118, 7, 22),
+                "France",
+                "Nice",
+                "L'Hotel Sur Mar"
+        ));
+
+        travelOfferRepository.save(createTravelOffer(
                 24,
                 5999,
                 new Date(118, 9, 2),
