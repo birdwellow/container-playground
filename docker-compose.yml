@@ -2,12 +2,17 @@ version: "3"
 
 services:
 
-  angular:
-    ports:
-      - 80:80
-    build: ./angular-service
+#  angular:
+#    ports:
+#      - 80:80
+#    build: ./angular-service
 
-  spring-boot:
+#  spring-boot:
+#    ports:
+#      - 8080:8080
+#    build: ./spring-boot-service
+
+  mongodb:
+    image: mongo
     ports:
-      - 8080:8080
-    build: ./spring-boot-service
+      - 27017:27017
