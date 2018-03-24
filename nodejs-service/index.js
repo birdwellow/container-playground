@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/persons', routes);
 
-app.get('*', function(req, res){
+app.use('*', function(req, res){
     res.status(404).send('Invalid URL');
 });
 
