@@ -29,7 +29,7 @@ router.get('/', function(req, res){
             status = 200;
         }
 
-        Broker.send('test-topic', 'kram');
+        Broker.send('test-topic', {my:'kram'});
 
         res.status(status).send(persons);
     });

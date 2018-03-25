@@ -31,6 +31,9 @@ client.on('error', errorPrinter('--- Producer error ---'));
 const Broker = {
 
     send: function (topic, message) {
+        if (typeof message === 'object') {
+            message = JSON.stringify(message);
+        }
         payloads = [
             { topic: topic, messages: message, partition: 0 }
         ];
@@ -53,7 +56,13 @@ const Broker = {
         consumer.on('error', errorPrinter('--- Consumer error ---'));
         consumer.addTopics([topic], function (err) {
             consumer.on('message', function (message) {
-                handler(message.value);
+                var messageValue = message.value;
+                try {
+                    messageValue = JSON.parse(messageValue);
+                } catch (exception) {
+
+                }
+                handler(messageValue);
             });
         });
     }
