@@ -1,16 +1,25 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var app = express();
-var routes = require('./src/routes/persons.js');
+var bodyParser = require('body-parser');
+var personsRoutes = require('./src/routes/persons');
 
-var db = require('./src/db/db.js');
+// Establish Message Broker connection
+var Broker = require('./src/messaging/broker');
+
+Broker.on('test-topic', function (payload) {
+    console.warn(payload);
+});
+
+
+// Establish Mongo DB Connection
+var dbConnection = require('./src/db/dbConnection');
 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
-app.use('/persons', routes);
+app.use('/persons', personsRoutes);
 
 app.use('*', function(req, res){
     res.status(404).send('Invalid URL');

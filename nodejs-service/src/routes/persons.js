@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Person = require('../db/model/person.js');
+var Person = require('../db/model/person');
+var Broker = require('../messaging/broker');
 
 
 
@@ -27,6 +28,9 @@ router.get('/', function(req, res){
         if (persons && persons.length > 0) {
             status = 200;
         }
+
+        Broker.send('test-topic', 'kram');
+
         res.status(status).send(persons);
     });
 });

@@ -16,3 +16,15 @@ services:
     image: mongo
     ports:
       - 27017:27017
+    network_mode: "host"
+
+  kafka:
+    image: spotify/kafka
+    environment:
+      - ADVERTISED_PORT=9092
+      - ADVERTISED_HOST=localhost
+#      - ADVERTISED_HOST=kafka
+    ports:
+      - 2181:2181
+      - 9092:9092
+    network_mode: "host"
