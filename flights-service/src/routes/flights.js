@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Person = require('../db/model/person');
+var Flight = require('../db/model/flight');
 var Broker = require('../messaging/broker');
 
 
@@ -8,13 +8,13 @@ var Broker = require('../messaging/broker');
 /* Create */
 router.post('/', function(req, res){
 
-    var newPerson = new Person(req.body);
+    var newFlight = new Flight(req.body);
 
-    newPerson.save(function(err, savedPerson) {
+    newFlight.save(function(err, savedFlight) {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.status(200).send(savedPerson);
+            res.status(200).send(savedFlight);
         }
     });
 });
@@ -23,25 +23,25 @@ router.post('/', function(req, res){
 
 /* Read */
 router.get('/', function(req, res){
-    Person.find(function(err, persons){
+    Flight.find(function(err, flights){
         var status = 204;
-        if (persons && persons.length > 0) {
+        if (flights && flights.length > 0) {
             status = 200;
         }
 
         Broker.send('test-topic', {my:'kram'});
 
-        res.status(status).send(persons);
+        res.status(status).send(flights);
     });
 });
 
 router.get('/:id', function(req, res){
-    Person.findById(req.params.id, function (err, person) {
+    Flight.findById(req.params.id, function (err, flight) {
         var status = 404;
-        if (person) {
+        if (flight) {
             status = 200;
         }
-        res.status(status).send(person);
+        res.status(status).send(flight);
     });
 });
 
@@ -50,9 +50,9 @@ router.get('/:id', function(req, res){
 /* Update */
 router.put('/', function(req, res){
 
-    var updatePerson = req.body;
+    var updateFlight = req.body;
 
-    Person.update({ _id: updatePerson._id }, { $set: updatePerson}, function(err) {
+    Flight.update({ _id: updateFlight._id }, { $set: updateFlight}, function(err) {
         if (err) {
             res.status(400).send(err);
         } else {
@@ -66,7 +66,7 @@ router.put('/', function(req, res){
 /* Delete */
 router.delete('/:id', function(req, res){
     console.log("Removing " + req.params.id);
-    Person.remove({_id: req.params.id}, function (err) {
+    Flight.remove({_id: req.params.id}, function (err) {
         if (err) {
             res.status(400).send(err);
         }
