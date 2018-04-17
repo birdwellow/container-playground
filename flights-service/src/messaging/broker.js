@@ -7,9 +7,10 @@ var errorPrinter = function (baseMessage) {
     };
 };
 
+var KAFKA_HOST = process.env.KAFKA_HOST || 'localhost';
+var KAFKA_PORT = process.env.KAFKA_PORT || '2181';
 
-
-var client = new kafka.Client('localhost:2181', 'nodejs-client');
+var client = new kafka.Client(`${KAFKA_HOST}:${KAFKA_PORT}`, 'nodejs-client');
 client.on('error', errorPrinter('--- Client error ---'));
 
 
