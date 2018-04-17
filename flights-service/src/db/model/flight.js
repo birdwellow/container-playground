@@ -4,11 +4,11 @@ var flightSchema = mongoose.Schema({
     id: String,
     departure: {
         city: String,
-        datetime: String
+        datetime: Date
     },
     arrival: {
         city: String,
-        datetime: String
+        datetime: Date
     },
     price: Number,
     seats: Number
