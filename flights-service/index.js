@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var flightsRoutes = require('./src/routes/flights');
+var bookingsRoutes = require('./src/routes/bookings');
 
 // Establish Message Broker connection
 var Broker = require('./src/messaging/broker');
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use('/flights', flightsRoutes);
+app.use('/bookings', bookingsRoutes);
 
 app.use('*', function(req, res){
     res.status(404).send('Invalid URL');
