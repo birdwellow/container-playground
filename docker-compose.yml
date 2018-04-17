@@ -2,29 +2,53 @@ version: "3"
 
 services:
 
-#  angular:
-#    ports:
-#      - 80:80
-#    build: ./angular-service
-
-#  spring-boot:
-#    ports:
-#      - 8080:8080
-#    build: ./spring-boot-service
-
-  mongodb:
-    image: mongo
+  frontend-service:
     ports:
-      - 27017:27017
-    network_mode: "host"
+      - 80:80
+    build: ./frontend-service
+
 
   kafka:
     image: spotify/kafka
     environment:
       - ADVERTISED_PORT=9092
-      - ADVERTISED_HOST=localhost
-#      - ADVERTISED_HOST=kafka
+      - ADVERTISED_HOST=kafka
     ports:
       - 2181:2181
       - 9092:9092
-    network_mode: "host"
+
+
+  travel-booking-service:
+    ports:
+      - 8080:8080
+    build: ./travel-booking-service
+    environment:
+      - KAFKA_HOST=kafka
+      - MONGO_HOST=travel-booking-service-db
+      - MONGO_PORT=27017
+  travel-booking-service-db:
+    image: mongo
+
+
+  flights-service:
+    ports:
+      - 3001:3000
+    build: ./flights-service
+    environment:
+      - KAFKA_HOST=kafka
+      - MONGO_HOST=flights-service-db
+      - MONGO_PORT=27017
+  flights-service-db:
+    image: mongo
+
+
+  hotels-service:
+    ports:
+      - 3002:3000
+    build: ./hotels-service
+    environment:
+      - KAFKA_HOST=kafka
+      - MONGO_HOST=hotels-service-db
+      - MONGO_PORT=27017
+  hotels-service-db:
+    image: mongo
