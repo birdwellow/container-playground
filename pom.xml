@@ -11,8 +11,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-service</module>
-        <module>angular-service</module>
-        <module>nodejs-service</module>
+        <module>travel-booking-service</module>
+        <module>frontend-service</module>
+        <module>flights-service</module>
+        <module>hotels-service</module>
     </modules>
 </project>
