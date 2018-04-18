@@ -32,7 +32,7 @@ services:
 
   flights-service:
     ports:
-      - 3001:3000
+      - 3001:3001
     build: ./flights-service
     environment:
       - KAFKA_HOST=kafka
@@ -44,7 +44,7 @@ services:
 
   hotels-service:
     ports:
-      - 3002:3000
+      - 3002:3002
     build: ./hotels-service
     environment:
       - KAFKA_HOST=kafka
