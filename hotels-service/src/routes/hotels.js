@@ -59,6 +59,39 @@ router.put('/', function(req, res){
     });
 });
 
+/* Update with Booking */
+router.put('/:id/bookings', function(req, res){
+
+    var hotelId = req.params.id;
+    var rooms = req.query.rooms;
+    if (!hotelId || !rooms) {
+        res.status(400).send("No hotelId or rooms specified");
+        return;
+    }
+
+    Hotel.findById(hotelId, function (err, hotel) {
+        if (!hotel || hotel.rooms - booking.rooms < 0) {
+            res.status(404).send("Hotel not found or no rooms available");
+        }
+
+        hotel.rooms = hotel.rooms - booking.rooms;
+
+        if (hotel.rooms <= 0) {
+            Hotel.remove({_id: hotel._id}, function (err) {
+                res.status(200).send();
+            });
+            return;
+        }
+
+        hotel.save(function(err) {
+            if (!err) {
+                res.status(200).send();
+            }
+        });
+
+    });
+
+});
 
 
 /* Delete */

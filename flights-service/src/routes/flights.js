@@ -61,6 +61,40 @@ router.put('/', function(req, res){
     });
 });
 
+/* Update with Booking */
+router.put('/:id/bookings', function(req, res){
+
+    var flightId = req.params.id;
+    var seats = req.query.seats;
+    if (!flightId || !seats) {
+        res.status(400).send("No flightId or seats specified");
+        return;
+    }
+
+    Flight.findById(flightId, function (err, flight) {
+        if (!flight || flight.seats - seats < 0) {
+            res.status(404).send("Flight not found or no seats available");
+        }
+
+        flight.seats = flight.seats - seats;
+
+        if (flight.seats <= 0) {
+            Flight.remove({_id: flight._id}, function (err) {
+                res.status(200).send();
+            });
+            return;
+        }
+
+        flight.save(function(err) {
+            if (!err) {
+                res.status(200).send();
+            }
+        });
+
+    });
+
+});
+
 
 
 /* Delete */
