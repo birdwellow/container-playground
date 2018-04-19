@@ -2,14 +2,11 @@ var mongoose = require('mongoose');
 
 var flightSchema = mongoose.Schema({
     id: String,
-    departure: {
-        city: String,
-        datetime: Date
-    },
-    arrival: {
-        city: String,
-        datetime: Date
-    },
+    date: Date,
+    departureTime: String,
+    departureCity: String,
+    arrivalCity: String,
+    arrivalTime: String,
     price: Number,
     seats: Number
 });
