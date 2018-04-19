@@ -25,8 +25,13 @@ router.post('/', function(req, res){
 router.get('/', function(req, res){
 
     var queryArg = {};
-    queryArg.city = req.query.city;
-    queryArg.price = {$lt: req.query.maxprice};
+
+    if (queryArg.city) {
+        queryArg.city = req.query.city;
+    }
+    if (queryArg.price) {
+        queryArg.price = {$lt: req.query.maxprice};
+    }
 
     Hotel.find(queryArg, function(err, hotels){
         var status = 204;
