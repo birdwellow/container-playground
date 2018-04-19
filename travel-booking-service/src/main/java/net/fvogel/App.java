@@ -1,7 +1,7 @@
 package net.fvogel;
 
-import net.fvogel.model.TravelOffer;
-import net.fvogel.persistence.TravelOfferRepository;
+import net.fvogel.model.City;
+import net.fvogel.persistence.CitiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class App {
 
     @Autowired
-    TravelOfferRepository travelOfferRepository;
+    CitiesRepository citiesRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -22,50 +22,18 @@ public class App {
     @PostConstruct
     public void insertData() {
 
-        travelOfferRepository.deleteAll();
+        citiesRepository.deleteAll();
 
-        travelOfferRepository.save(createTravelOffer(
-                10,
-                7899,
-                new Date(118, 7, 13),
-                new Date(118, 7, 22),
-                "Rome",
-                "Italy",
-                "Villa Garibaldi"
-        ));
-
-        travelOfferRepository.save(createTravelOffer(
-                1,
-                13899,
-                new Date(118, 7, 13),
-                new Date(118, 7, 22),
-                "France",
-                "Nice",
-                "L'Hotel Sur Mar"
-        ));
-
-        travelOfferRepository.save(createTravelOffer(
-                24,
-                5999,
-                new Date(118, 9, 2),
-                new Date(118, 9, 16),
-                "Luxor",
-                "Egypt",
-                "Grand Resort"
-        ));
-
+        citiesRepository.save(createCity("Rome", "Italy"));
+        citiesRepository.save(createCity("Nice", "France"));
+        citiesRepository.save(createCity("Luxor", "Egypt"));
     }
 
-    private TravelOffer createTravelOffer(int amount, int price, Date arrival, Date departure, String city, String country, String hotelName) {
-        TravelOffer travelOffer = new TravelOffer();
+    private City createCity(String name, String country) {
+        City travelOffer = new City();
 
-        travelOffer.setAmount(amount);
-        travelOffer.setPrice(price);
-        travelOffer.setArrivalDate(arrival);
-        travelOffer.setDepartureDate(departure);
-        travelOffer.setCity(city);
+        travelOffer.setName(name);
         travelOffer.setCountry(country);
-        travelOffer.setHotelName(hotelName);
 
         return travelOffer;
     }

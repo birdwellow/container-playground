@@ -7,17 +7,12 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class TravelOffer {
+public class City {
 
     @Id
     String id;
 
-    Integer price;
-    Integer amount;
-    Date arrivalDate;
-    Date departureDate;
-    String hotelName;
+    String name;
     String country;
-    String city;
 
 }
