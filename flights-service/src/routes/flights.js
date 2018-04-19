@@ -23,7 +23,27 @@ router.post('/', function(req, res){
 
 /* Read */
 router.get('/', function(req, res){
-    Flight.find(function(err, flights){
+
+    var queryArg = {};
+
+    if (req.query.maxprice) {
+        queryArg.price = {$lt: req.query.maxprice};
+    }
+    if (req.query.seats) {
+        queryArg.seats = {$gt: req.query.seats - 1};
+    }
+    if (req.query.from) {
+        queryArg.departureCity = req.query.from;
+    }
+    if (req.query.to) {
+        queryArg.arrivalCity = req.query.to;
+    }
+    if (req.query.date) {
+        var date = new Date(req.query.date);
+        queryArg.date = date;
+    }
+
+    Flight.find(queryArg, function(err, flights){
         var status = 204;
         if (flights && flights.length > 0) {
             status = 200;

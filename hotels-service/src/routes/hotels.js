@@ -23,7 +23,12 @@ router.post('/', function(req, res){
 
 /* Read */
 router.get('/', function(req, res){
-    Hotel.find(function(err, hotels){
+
+    var queryArg = {};
+    queryArg.city = req.query.city;
+    queryArg.price = {$lt: req.query.maxprice};
+
+    Hotel.find(queryArg, function(err, hotels){
         var status = 204;
         if (hotels && hotels.length > 0) {
             status = 200;
