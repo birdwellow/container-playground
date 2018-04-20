@@ -27,10 +27,10 @@ router.get('/', function(req, res){
     var queryArg = {};
 
     if (req.query.maxprice) {
-        queryArg.price = {$lt: req.query.maxprice};
+        queryArg.price = {$lte: req.query.maxprice};
     }
     if (req.query.seats) {
-        queryArg.seats = {$gt: req.query.seats - 1};
+        queryArg.seats = {$gte: req.query.seats};
     }
     if (req.query.from) {
         queryArg.departureCity = req.query.from;

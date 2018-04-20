@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @Service
-public class HotelsService {
+public class HotelsServiceClient extends RestServiceClient {
 
     @Value("${integration.hotelsservice.host}")
     String host;
@@ -22,18 +22,19 @@ public class HotelsService {
 
     private RestTemplate restTemplate;
 
-    public HotelsService(RestTemplate restTemplate) {
+    public HotelsServiceClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public List<Hotel> getHotels(String city, Integer price) {
+    public List<Hotel> getHotels(String city, Integer rooms) {
+
         String url = String.format("http://%s:%s/%s", host, port, basePath);
 
-        Map queryParameters = new HashMap();
+        Map<String, Object> queryParameters = new HashMap<String, Object>();
         queryParameters.put("city", city);
-        if (price != null) {
-            queryParameters.put("price", price);
-        }
+        queryParameters.put("rooms", rooms);
+
+        url = appendQueryParams(url, queryParameters);
 
         ResponseEntity<Hotel[]> hotelsResponse = restTemplate.getForEntity(url, Hotel[].class, queryParameters);
         Hotel[] hotelArray = hotelsResponse.getBody();
@@ -42,8 +43,5 @@ public class HotelsService {
         }
         return Arrays.asList(hotelArray);
     }
-
-
-
 
 }

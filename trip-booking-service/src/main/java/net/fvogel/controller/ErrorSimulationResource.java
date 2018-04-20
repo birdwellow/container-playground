@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/error")
+@RequestMapping(path = "/simulateerror")
 public class ErrorSimulationResource {
 
     @GetMapping()

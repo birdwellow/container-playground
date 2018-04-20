@@ -30,7 +30,10 @@ router.get('/', function(req, res){
         queryArg.city = req.query.city;
     }
     if (req.query.price) {
-        queryArg.price = {$lt: req.query.maxprice};
+        queryArg.price = {$lte: req.query.maxprice};
+    }
+    if (req.query.rooms) {
+        queryArg.rooms = {$gte: req.query.rooms};
     }
 
     Hotel.find(queryArg, function(err, hotels){

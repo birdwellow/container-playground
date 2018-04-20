@@ -30,13 +30,13 @@ module.exports = function () {
 
             {
                 "city": "Paris",
-                "name": "L'Etoille",
+                "name": "Hotel d'Azur",
                 "price": 399.99,
                 "rooms": 45
             },
             {
                 "city": "Paris",
-                "name": "Le Grand Maison",
+                "name": "La Riviera",
                 "price": 419.00,
                 "rooms": 210
             },

@@ -32,14 +32,14 @@ module.exports = function () {
                 "date": "2018-04-23T00:00:00",
                 "departureCity": "Munich",
                 "departureTime": "09:25:00",
-                "arrivalCity": "Paris",
+                "arrivalCity": "Nice",
                 "arrivalTime": "10:35:00",
                 "price": 124,
                 "seats": 8
             },
             {
                 "date": "2018-05-04T00:00:00",
-                "departureCity": "Paris",
+                "departureCity": "Nice",
                 "departureTime": "16:15:00",
                 "arrivalCity": "Munich",
                 "arrivalTime": "17:25:00",
