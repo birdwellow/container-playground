@@ -26,10 +26,10 @@ router.get('/', function(req, res){
 
     var queryArg = {};
 
-    if (queryArg.city) {
+    if (req.query.city) {
         queryArg.city = req.query.city;
     }
-    if (queryArg.price) {
+    if (req.query.price) {
         queryArg.price = {$lt: req.query.maxprice};
     }
 
