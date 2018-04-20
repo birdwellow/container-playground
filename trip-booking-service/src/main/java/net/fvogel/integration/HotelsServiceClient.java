@@ -17,9 +17,6 @@ public class HotelsServiceClient extends RestServiceClient {
     @Value("${integration.hotelsservice.port}")
     String port;
 
-    @Value("${integration.hotelsservice.basepath}")
-    String basePath;
-
     private RestTemplate restTemplate;
 
     public HotelsServiceClient(RestTemplate restTemplate) {
@@ -28,7 +25,7 @@ public class HotelsServiceClient extends RestServiceClient {
 
     public List<Hotel> getHotels(String city, Integer rooms) {
 
-        String url = String.format("http://%s:%s/%s", host, port, basePath);
+        String url = String.format("http://%s:%s/hotels", host, port);
 
         Map<String, Object> queryParameters = new HashMap<String, Object>();
         queryParameters.put("city", city);

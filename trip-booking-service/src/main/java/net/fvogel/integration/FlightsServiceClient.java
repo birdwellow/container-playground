@@ -17,9 +17,6 @@ public class FlightsServiceClient extends RestServiceClient {
     @Value("${integration.flightsservice.port}")
     String port;
 
-    @Value("${integration.flightsservice.basepath}")
-    String basePath;
-
     private RestTemplate restTemplate;
 
     public FlightsServiceClient(RestTemplate restTemplate) {
@@ -28,7 +25,7 @@ public class FlightsServiceClient extends RestServiceClient {
 
     public List<Flight> getFlights(String date, String start, String destination, Integer seats) {
 
-        String url = String.format("http://%s:%s/%s?", host, port, basePath);
+        String url = String.format("http://%s:%s/flights?", host, port);
 
         Map<String, Object> queryParameters = new HashMap<String, Object>();
         queryParameters.put("date", date);
