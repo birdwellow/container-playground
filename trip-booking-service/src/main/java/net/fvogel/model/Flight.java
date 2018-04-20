@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Flight {
 
+    String _id;
     String date;
     String departureCity;
     String departureTime;

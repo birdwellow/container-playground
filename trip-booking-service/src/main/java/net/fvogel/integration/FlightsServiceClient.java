@@ -43,4 +43,9 @@ public class FlightsServiceClient extends RestServiceClient {
         return Arrays.asList(flightsArray);
     }
 
+    public void bookFlight(String flightId, Integer seats) {
+        String url = String.format("http://%s:%s/flights/%s/bookings?seats=%s", host, port, flightId, seats);
+        restTemplate.put(url, null);
+    }
+
 }

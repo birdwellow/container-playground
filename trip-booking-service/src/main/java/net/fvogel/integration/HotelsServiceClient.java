@@ -41,4 +41,9 @@ public class HotelsServiceClient extends RestServiceClient {
         return Arrays.asList(hotelArray);
     }
 
+    public void bookHotel(String hotelId, Integer rooms) {
+        String url = String.format("http://%s:%s/hotels/%s/bookings?rooms=%s", host, port, hotelId, rooms);
+        restTemplate.put(url, null);
+    }
+
 }

@@ -5,6 +5,7 @@ import net.fvogel.integration.FlightsServiceClient;
 import net.fvogel.integration.HotelsServiceClient;
 import net.fvogel.model.Flight;
 import net.fvogel.model.Hotel;
+import net.fvogel.model.TripBooking;
 import net.fvogel.model.TripOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class TripsResource {
         this.tripOfferService = tripOfferService;
     }
 
-    @GetMapping()
+    @GetMapping("/offers")
     public List<TripOffer> getTripOffers(
             @RequestParam(name = "start") String startCity,
             @RequestParam(name = "destination") String destinationCity,
@@ -40,12 +41,19 @@ public class TripsResource {
             @RequestParam(name = "price", required = false) Double price
     ) {
         List<Flight> outBoundFlights = flightsServiceClient.getFlights(arrivalDate, startCity, destinationCity, persons);
-        List<Hotel> hotels = hotelsServiceClient.getHotels(destinationCity, persons);
         List<Flight> inBoundFlights = flightsServiceClient.getFlights(departureDate, destinationCity, startCity, persons);
+        List<Hotel> hotels = hotelsServiceClient.getHotels(destinationCity, persons);
 
         return tripOfferService.createTripOffers(outBoundFlights, hotels, inBoundFlights).stream()
                 .filter(tripOffer -> tripOffer.getPrice() <= price)
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping("/booking")
+    public void bookTrip(@RequestBody TripBooking tripBooking) {
+        flightsServiceClient.bookFlight(tripBooking.getOutboundFlightId(), tripBooking.getPersons());
+        flightsServiceClient.bookFlight(tripBooking.getInboundFlightId(), tripBooking.getPersons());
+        hotelsServiceClient.getHotels(tripBooking.getHotelId(), tripBooking.getPersons());
     }
 
 }
