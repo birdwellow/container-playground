@@ -30,11 +30,11 @@ public class App {
     }
 
     private City createCity(String name, String country) {
-        City travelOffer = new City();
+        City city = new City();
 
-        travelOffer.setName(name);
-        travelOffer.setCountry(country);
+        city.setName(name);
+        city.setCountry(country);
 
-        return travelOffer;
+        return city;
     }
 }

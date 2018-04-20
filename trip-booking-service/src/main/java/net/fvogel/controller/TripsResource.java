@@ -12,36 +12,22 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(path = "/")
-public class TravelOffersResource {
+@RequestMapping(path = "/trips")
+public class TripsResource {
 
-    private CitiesRepository citiesRepository;
     private HotelsService hotelsService;
     private FlightsService flightsService;
 
     @Autowired
-    public TravelOffersResource(CitiesRepository citiesRepository, HotelsService hotelsService, FlightsService flightsService) {
-        this.citiesRepository = citiesRepository;
+    public TripsResource(HotelsService hotelsService, FlightsService flightsService) {
         this.hotelsService = hotelsService;
         this.flightsService = flightsService;
     }
 
-    @GetMapping("/cities")
-    public List<City> getCities() {
-        List<City> cities = citiesRepository.findAll();
-        return cities;
-    }
-
-    @GetMapping("/tours")
+    @GetMapping()
     public void getTours(@RequestParam(name = "destination", required = false) String destination) {
         List<Hotel> hotels = hotelsService.getHotels(destination, null);
         System.out.println(hotels);
-    }
-
-    @GetMapping("/error")
-    public void shutDown() {
-        System.out.println("Shutting down");
-        System.exit(-1);
     }
 
 }

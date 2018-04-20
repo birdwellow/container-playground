@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>travel-booking-service</module>
+        <module>trip-booking-service</module>
         <module>frontend-service</module>
         <module>flights-service</module>
         <module>hotels-service</module>
