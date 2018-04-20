@@ -1,13 +1,16 @@
 package net.fvogel.controller;
 
+import net.fvogel.business.TripOfferService;
 import net.fvogel.integration.FlightsServiceClient;
 import net.fvogel.integration.HotelsServiceClient;
 import net.fvogel.model.Flight;
 import net.fvogel.model.Hotel;
+import net.fvogel.model.TripOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin("*")
 @RestController
@@ -16,15 +19,19 @@ public class TripsResource {
 
     private HotelsServiceClient hotelsServiceClient;
     private FlightsServiceClient flightsServiceClient;
+    private TripOfferService tripOfferService;
 
     @Autowired
-    public TripsResource(HotelsServiceClient hotelsServiceClient, FlightsServiceClient flightsServiceClient) {
+    public TripsResource(HotelsServiceClient hotelsServiceClient,
+                         FlightsServiceClient flightsServiceClient,
+                         TripOfferService tripOfferService) {
         this.hotelsServiceClient = hotelsServiceClient;
         this.flightsServiceClient = flightsServiceClient;
+        this.tripOfferService = tripOfferService;
     }
 
     @GetMapping()
-    public void getTrips(
+    public List<TripOffer> getTripOffers(
             @RequestParam(name = "start") String startCity,
             @RequestParam(name = "destination") String destinationCity,
             @RequestParam(name = "arrival") String arrivalDate,
@@ -36,7 +43,9 @@ public class TripsResource {
         List<Hotel> hotels = hotelsServiceClient.getHotels(destinationCity, persons);
         List<Flight> inBoundFlights = flightsServiceClient.getFlights(departureDate, destinationCity, startCity, persons);
 
-        return;
+        return tripOfferService.createTripOffers(outBoundFlights, hotels, inBoundFlights).stream()
+                .filter(tripOffer -> tripOffer.getPrice() <= price)
+                .collect(Collectors.toList());
     }
 
 }
