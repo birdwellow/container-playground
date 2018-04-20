@@ -19,6 +19,7 @@ services:
 
 
   travel-booking-service:
+    restart: always
     ports:
       - 8080:8080
     build: ./travel-booking-service
@@ -26,11 +27,17 @@ services:
       - KAFKA_HOST=kafka
       - MONGO_HOST=travel-booking-service-db
       - MONGO_PORT=27017
+      - HOTELSSERVICE_HOST=hotels-service
+      - HOTELSSERVICE_PORT=3002
+    depends_on:
+      - kafka
+      - travel-booking-service-db
   travel-booking-service-db:
     image: mongo
 
 
   flights-service:
+    restart: always
     ports:
       - 3001:3001
     build: ./flights-service
@@ -38,11 +45,15 @@ services:
       - KAFKA_HOST=kafka
       - MONGO_HOST=flights-service-db
       - MONGO_PORT=27017
+    depends_on:
+      - kafka
+      - flights-service-db
   flights-service-db:
     image: mongo
 
 
   hotels-service:
+    restart: always
     ports:
       - 3002:3002
     build: ./hotels-service
@@ -50,5 +61,8 @@ services:
       - KAFKA_HOST=kafka
       - MONGO_HOST=hotels-service-db
       - MONGO_PORT=27017
+    depends_on:
+      - kafka
+      - hotels-service-db
   hotels-service-db:
     image: mongo
