@@ -3,10 +3,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var hotelsRoutes = require('./src/routes/hotels');
 
-// Establish Message Broker connection
-var Broker = require('./src/messaging/broker');
-
-
 // Establish Mongo DB Connection
 var dbConnection = require('./src/db/dbConnection');
 
