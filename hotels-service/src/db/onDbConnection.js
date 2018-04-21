@@ -29,13 +29,13 @@ module.exports = function () {
             },
 
             {
-                "city": "Paris",
+                "city": "Nice",
                 "name": "Hotel d'Azur",
                 "price": 399.99,
                 "rooms": 45
             },
             {
-                "city": "Paris",
+                "city": "Nice",
                 "name": "La Riviera",
                 "price": 419.00,
                 "rooms": 210
