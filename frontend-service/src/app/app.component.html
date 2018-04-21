@@ -3,16 +3,16 @@
     <div class="inner">
       <h3 class="masthead-brand">Travel Offers</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Overview</a>
-        <a class="nav-link" href="#">Search</a>
-        <a class="nav-link" href="#">Info</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="search" href="#">Overview</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="trips" href="#">Trips</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="booking" href="#">Booking</a>
       </nav>
     </div>
   </header>
 
   <main role="main" class="inner cover">
     <!--<city-list></city-list>-->
-    <trip-data-form></trip-data-form>
+    <router-outlet></router-outlet>
   </main>
 
   <footer class="mastfoot mt-auto">
@@ -21,5 +21,3 @@
     </div>
   </footer>
 </div>
-
-<router-outlet></router-outlet>

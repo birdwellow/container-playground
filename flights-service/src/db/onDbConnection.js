@@ -10,7 +10,7 @@ module.exports = function () {
 
         var flights = [
             {
-                "date": "2018-04-23T00:00:00",
+                "date": "2018-04-23",
                 "departureCity": "Munich",
                 "departureTime": "08:35:00",
                 "arrivalCity": "Luxor",
@@ -19,7 +19,7 @@ module.exports = function () {
                 "seats": 125
             },
             {
-                "date": "2018-05-04T00:00:00",
+                "date": "2018-05-04",
                 "departureCity": "Luxor",
                 "departureTime": "07:55:00",
                 "arrivalCity": "Munich",
@@ -29,7 +29,7 @@ module.exports = function () {
             },
 
             {
-                "date": "2018-04-23T00:00:00",
+                "date": "2018-04-23",
                 "departureCity": "Munich",
                 "departureTime": "09:25:00",
                 "arrivalCity": "Nice",
@@ -38,7 +38,7 @@ module.exports = function () {
                 "seats": 8
             },
             {
-                "date": "2018-05-04T00:00:00",
+                "date": "2018-05-04",
                 "departureCity": "Nice",
                 "departureTime": "16:15:00",
                 "arrivalCity": "Munich",
@@ -48,7 +48,7 @@ module.exports = function () {
             },
 
             {
-                "date": "2018-04-23T00:00:00",
+                "date": "2018-04-23",
                 "departureCity": "Munich",
                 "departureTime": "11:05:00",
                 "arrivalCity": "Rome",
@@ -57,7 +57,7 @@ module.exports = function () {
                 "seats": 3
             },
             {
-                "date": "2018-05-04T00:00:00",
+                "date": "2018-05-04",
                 "departureCity": "Rome",
                 "departureTime": "18:40:00",
                 "arrivalCity": "Munich",

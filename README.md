@@ -49,7 +49,7 @@ Simulate a fatal error causing the service to shut down; meant for failover test
 #### `GET http://localhost:8080/cities`
 Test resource that requires a MongoDB connection.
 
-#### `GET http://localhost:8080/trips/offers?start=Munich&destination=Rome&arrival=2018-04-23T00:00:00.000Z&departure=2018-05-04T00:00:00.000Z&persons=2&price=600`
+#### `GET http://localhost:8080/trips/offers?start=Munich&destination=Rome&arrival=2018-04-23&departure=2018-05-04&persons=2&price=600`
 Get trip offers.
 
 #### `POST http://localhost:8080/trips/booking`

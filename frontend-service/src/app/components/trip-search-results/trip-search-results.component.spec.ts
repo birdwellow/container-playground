@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TripDataFormComponent } from './trip-data-form.component';
+import { TripSearchResultsComponent } from './trip-search-results.component';
 
-describe('TripDataFormComponent', () => {
-  let component: TripDataFormComponent;
-  let fixture: ComponentFixture<TripDataFormComponent>;
+describe('TripSearchResultsComponent', () => {
+  let component: TripSearchResultsComponent;
+  let fixture: ComponentFixture<TripSearchResultsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TripDataFormComponent ]
+      declarations: [ TripSearchResultsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TripDataFormComponent);
+    fixture = TestBed.createComponent(TripSearchResultsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -14,6 +14,10 @@ public class TripOfferService {
     public List<TripOffer> createTripOffers(List<Flight> outboundFlights, List<Hotel> hotels, List<Flight> inboundFlights) {
         List<TripOffer> tripOffers = new ArrayList<TripOffer>();
 
+        if (isNullOrEmpty(outboundFlights) || isNullOrEmpty(hotels) || isNullOrEmpty(inboundFlights)) {
+            return tripOffers;
+        }
+
         for (Flight outboundFlight : outboundFlights) {
             for (Hotel hotel : hotels) {
                 for (Flight inboundFlight : inboundFlights) {
@@ -28,5 +32,9 @@ public class TripOfferService {
             }
         }
         return tripOffers;
+    }
+
+    private boolean isNullOrEmpty(List list) {
+        return list == null || list.isEmpty();
     }
 }

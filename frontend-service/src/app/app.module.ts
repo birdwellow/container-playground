@@ -8,15 +8,19 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CityListComponent } from './components/city-list/city-list.component';
 import { CityThumbnailComponent } from './components/city-thumbnail/city-thumbnail.component';
-import { TripDataFormComponent } from './components/trip-data-form/trip-data-form.component';
+import { TripSearchFormComponent } from './components/trip-search-form/trip-search-form.component';
 import {FormsModule} from "@angular/forms";
+import { TripSearchResultsComponent } from './components/trip-search-results/trip-search-results.component';
+import { BookingComponent } from './components/booking/booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CityListComponent,
     CityThumbnailComponent,
-    TripDataFormComponent
+    TripSearchFormComponent,
+    TripSearchResultsComponent,
+    BookingComponent
   ],
   imports: [
     NgbModule.forRoot(),
