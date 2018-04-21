@@ -6,18 +6,24 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { TravelOfferThumbnailComponent } from './travel-offer-thumbnail/travel-offer-thumbnail.component';
+import { CityListComponent } from './components/city-list/city-list.component';
+import { CityThumbnailComponent } from './components/city-thumbnail/city-thumbnail.component';
+import { TripDataFormComponent } from './components/trip-data-form/trip-data-form.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TravelOfferThumbnailComponent
+    CityListComponent,
+    CityThumbnailComponent,
+    TripDataFormComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
