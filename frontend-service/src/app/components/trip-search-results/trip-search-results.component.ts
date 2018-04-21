@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {TripOffer} from "../../model/tripoffer.model";
 
 @Component({
   selector: 'trip-search-results',
@@ -9,21 +10,27 @@ import {HttpClient} from "@angular/common/http";
 })
 export class TripSearchResultsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  }
 
-  private travelOffers: Array<any>;
+  private searchParameters: any = null;
+  private tripOffers: Array<TripOffer>;
 
   ngOnInit() {
-    let queryParams: any = {};
+    this.searchParameters = {};
     for (let key of this.route.snapshot.queryParamMap.keys) {
-      queryParams[key] = this.route.snapshot.queryParamMap.get(key);
+      this.searchParameters[key] = this.route.snapshot.queryParamMap.get(key);
     }
 
-    this.http.get('http://localhost:8080/trips/offers', {params: queryParams})
-            .subscribe((travelOffers: Array<any>) => {
-      console.log(travelOffers);
-                this.travelOffers = travelOffers;
-            });
+    this.http
+      .get('http://localhost:8080/trips/offers', {params: this.searchParameters})
+      .subscribe((tripOffers: Array<TripOffer>) => {
+        if (!tripOffers) {
+          return;
+        }
+        this.tripOffers = tripOffers;
+        console.log(this.tripOffers);
+      });
   }
 
 }

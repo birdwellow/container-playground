@@ -1,3 +1,16 @@
 <div class="container">
-  trip-search-results works!
+  <span *ngIf="tripOffers">
+    <h1>Our trip offers for <b>{{ searchParameters.destination }}</b></h1>
+    (<i>{{ searchParameters.arrival }}</i> to <i>{{ searchParameters.departure }}</i>, {{ searchParameters.persons }} Persons, from <u>{{ searchParameters.start }}</u>)
+
+    <div *ngFor="let tripOffer of tripOffers" class="trip-offer">
+      <h2>{{ tripOffer.hotel.name }}</h2>
+      <h3><i>{{ tripOffer.price }}$</i> / person</h3>
+    </div>
+  </span>
+
+  <span *ngIf="!tripOffers">
+    <h1>We couldn't find any offers :(</h1>
+    Maybe <a [routerLink]="['search']" href="#"><u>search</u></a> with different options?
+  </span>
 </div>
