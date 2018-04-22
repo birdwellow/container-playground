@@ -44,7 +44,7 @@ public class TripsResource {
         List<Flight> inBoundFlights = flightsServiceClient.getFlights(departureDate, destinationCity, startCity, persons);
         List<Hotel> hotels = hotelsServiceClient.getHotels(destinationCity, persons);
 
-        return tripOfferService.createTripOffers(outBoundFlights, hotels, inBoundFlights).stream()
+        return tripOfferService.createTripOffers(outBoundFlights, hotels, inBoundFlights, persons).stream()
                 .filter(tripOffer -> price == null ? true : tripOffer.getPrice() <= price)
                 .collect(Collectors.toList());
     }

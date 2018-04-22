@@ -6,6 +6,7 @@ import lombok.Data;
 public class TripOffer {
 
     Double price;
+    Integer persons;
 
     Flight outboundFlight;
     Hotel hotel;

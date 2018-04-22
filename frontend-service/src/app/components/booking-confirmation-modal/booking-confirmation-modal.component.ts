@@ -11,7 +11,7 @@ import {TripOffer} from "../../model/tripoffer.model";
 export class BookingConfirmationModalComponent implements OnInit {
 
   @Input('trip-offer')
-  private tripOffer: TripOffer;
+  tripOffer: TripOffer;
 
   constructor(private modalService: NgbModal) {}
 

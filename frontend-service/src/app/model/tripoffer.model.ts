@@ -7,5 +7,6 @@ export interface TripOffer {
   inboundFlight: Flight;
   outboundFlight: Flight;
   price: number;
+  persons: number;
 
 }

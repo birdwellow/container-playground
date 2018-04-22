@@ -1,12 +1,12 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Your trip to <strong>{{ tripOffer.hotel.city }}</strong></h4>
+    <h4 class="modal-title">Your trip to <em>{{ tripOffer.hotel.city }}</em></h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body booking-confirmation">
-    <h4>Persons: <em>{{ tripOffer.hotel.rooms }}</em> </h4>
+    <h4>Persons: <em>{{ tripOffer.persons }}</em> </h4>
 
     <hr>
 

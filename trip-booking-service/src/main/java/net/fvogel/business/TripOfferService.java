@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class TripOfferService {
 
-    public List<TripOffer> createTripOffers(List<Flight> outboundFlights, List<Hotel> hotels, List<Flight> inboundFlights) {
+    public List<TripOffer> createTripOffers(List<Flight> outboundFlights, List<Hotel> hotels, List<Flight> inboundFlights, Integer persons) {
         List<TripOffer> tripOffers = new ArrayList<TripOffer>();
 
         if (isNullOrEmpty(outboundFlights) || isNullOrEmpty(hotels) || isNullOrEmpty(inboundFlights)) {
@@ -25,7 +25,11 @@ public class TripOfferService {
                     tripOffer.setOutboundFlight(outboundFlight);
                     tripOffer.setHotel(hotel);
                     tripOffer.setInboundFlight(inboundFlight);
-                    tripOffer.setPrice(outboundFlight.getPrice() + hotel.getPrice() + inboundFlight.getPrice());
+
+                    Double price = persons * (outboundFlight.getPrice() + hotel.getPrice() + inboundFlight.getPrice());
+
+                    tripOffer.setPrice(price);
+                    tripOffer.setPersons(persons);
 
                     tripOffers.add(tripOffer);
                 }
