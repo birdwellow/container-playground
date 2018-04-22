@@ -1,0 +1,51 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Your trip to <strong>{{ tripOffer.hotel.city }}</strong></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body booking-confirmation">
+    <h4>Persons: <em>{{ tripOffer.hotel.rooms }}</em> </h4>
+
+    <hr>
+
+    <h4>Flight There:</h4>
+    <ul>
+      <li>Date: <em>{{ tripOffer.outboundFlight.date | date }}</em></li>
+      <li>Departure: <em>{{ tripOffer.outboundFlight.departureTime }}</em></li>
+      <li>Arrival: <em>{{ tripOffer.outboundFlight.arrivalTime }}</em></li>
+      <li>Price: <em>${{ tripOffer.outboundFlight.price }} / person</em></li>
+    </ul>
+
+    <hr>
+
+    <h4>Hotel:</h4>
+    <ul>
+      <li>Name: <em>{{ tripOffer.hotel.name }}</em></li>
+      <li>Price: <em>${{ tripOffer.hotel.price }} / person</em></li>
+    </ul>
+
+    <hr>
+
+    <h4>Flight Back:</h4>
+    <ul>
+      <li>Date: <em>{{ tripOffer.inboundFlight.date | date }}</em></li>
+      <li>Departure: <em>{{ tripOffer.inboundFlight.departureTime }}</em></li>
+      <li>Arrival: <em>{{ tripOffer.inboundFlight.arrivalTime }}</em></li>
+      <li>Price: <em>${{ tripOffer.inboundFlight.price }} / person</em></li>
+    </ul>
+
+    <hr>
+
+    <h4>Total:</h4>
+    <h2 style="float: right"><i>${{ tripOffer.price }}</i></h2>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-warning" (click)="c('Close click')">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="confirmBooking()">Confirm booking</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Book now</button>
