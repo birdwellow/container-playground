@@ -5,7 +5,12 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body booking-confirmation">
+  <div class="modal-body text-center" *ngIf="bookingInProgress">
+    <div class="loader"></div>
+    <br>
+    <h2>Your booking is in progress</h2>
+  </div>
+  <div class="modal-body booking-confirmation" *ngIf="!bookingInProgress">
     <h4>Persons: <em>{{ tripOffer.persons }}</em> </h4>
 
     <hr>
