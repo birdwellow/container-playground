@@ -1,51 +1,78 @@
-<div class="container">
-  <h1>Search Trip Offers</h1>
-  <form (submit)="onSubmit()" #tripSearchForm="ngForm">
-    <div class="form-group row">
-      <label for="start" class="col-3 col-form-label">From:</label>
-      <div class="col-9">
-        <input type="text" class="form-control bg-dark text-light" id="start" name="start" [(ngModel)]="start" required>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+
+      <div class="city-selector col-md-4" *ngFor="let city of cities">
+        <div class="card mb-4 box-shadow" (click)="setDestination(city)" [ngClass]="{'active': city.name == destination}">
+          <img class="card-img-top"
+               src="/assets/img/{{ city.name | lowercase }}.jpg"
+               data-holder-rendered="true">
+          <div class="card-body">
+            <p class="card-text">
+              {{ city.name }}
+            </p>
+          </div>
+        </div>
       </div>
+
     </div>
-
-    <div class="form-group row">
-      <label for="destination" class="col-3 col-form-label">To:</label>
-      <div class="col-9">
-        <select class="form-control bg-dark text-light" id="destination" name="destination"  [(ngModel)]="destination" required>
-          <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="arrival" class="col-3 col-form-label">Arrival:</label>
-      <div class="col-9">
-        <input type="text" class="form-control bg-dark text-light" id="arrival" name="arrival" [(ngModel)]="arrival" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="departure" class="col-3 col-form-label">Departure:</label>
-      <div class="col-9">
-        <input type="text" class="form-control bg-dark text-light" id="departure" name="departure" [(ngModel)]="departure" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="persons" class="col-3 col-form-label">Persons:</label>
-      <div class="col-9">
-        <input type="number" class="form-control bg-dark text-light" id="persons" name="persons" [(ngModel)]="persons" required>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="price" class="col-3 col-form-label">Maximum price:</label>
-      <div class="col-9">
-        <input type="number" class="form-control bg-dark text-light" id="price" name="price" [(ngModel)]="price">
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-lg btn-secondary" [disabled]="!tripSearchForm.form.valid">Submit</button>
-
-  </form>
+  </div>
 </div>
+
+<section class="jumbotron text-center">
+  <h1>Search our trip Offers!</h1>
+  <hr>
+
+  <div class="container">
+    <form (submit)="onSubmit()" #tripSearchForm="ngForm">
+      <div class="form-group row">
+        <label for="start" class="col-3 col-form-label">From:</label>
+        <div class="col-9">
+          <input type="text" class="form-control" id="start" name="start" [(ngModel)]="start" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="destination" class="col-3 col-form-label">To:</label>
+        <div class="col-9">
+          <select class="form-control" id="destination" name="destination"  [(ngModel)]="destination" required>
+            <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="arrival" class="col-3 col-form-label">Arrival:</label>
+        <div class="col-9">
+          <input type="text" class="form-control" id="arrival" name="arrival" [(ngModel)]="arrival" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="departure" class="col-3 col-form-label">Departure:</label>
+        <div class="col-9">
+          <input type="text" class="form-control" id="departure" name="departure" [(ngModel)]="departure" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="persons" class="col-3 col-form-label">Persons:</label>
+        <div class="col-9">
+          <input type="number" class="form-control" id="persons" name="persons" [(ngModel)]="persons" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="price" class="col-3 col-form-label">Maximum price:</label>
+        <div class="col-9">
+          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="price">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-lg btn-secondary" [disabled]="!tripSearchForm.form.valid">Submit</button>
+
+    </form>
+  </div>
+
+
+</section>

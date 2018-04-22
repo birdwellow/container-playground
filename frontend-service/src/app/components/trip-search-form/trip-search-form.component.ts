@@ -27,6 +27,10 @@ export class TripSearchFormComponent implements OnInit {
     });
   }
 
+  setDestination(city: City) {
+    this.destination = city.name;
+  }
+
   onSubmit() {
     let queryParams: any = {
       start: this.start,

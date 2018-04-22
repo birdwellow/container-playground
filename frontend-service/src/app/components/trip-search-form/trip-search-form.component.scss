@@ -1,3 +1,24 @@
 .col-form-label {
   text-align: left;
 }
+
+.city-selector {
+
+  .card {
+    cursor: pointer;
+
+    &.active {
+      box-shadow: 0px 0px 5px #333;
+      background: #eee;
+      border: 1px solid #333;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 5px #666;
+    }
+  }
+}
+
+.jumbotron {
+  padding-top: 10px !important;
+}
