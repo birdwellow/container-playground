@@ -1,14 +1,17 @@
-.trip-offer {
-  margin: 20px 0;
-  padding: 10px 0;
-  cursor: pointer;
-
-  &:hover {
-    background: #555;
-  }
-}
-
-.trip-offer-thumbnail {
+.trip-offer-city {
   margin-bottom: 20px;
   text-align: center;
+}
+
+.trip-offer {
+  margin: 20px 0;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-align: left;
+
+  &:hover {
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 5px #eee;
+    background: #fafafa;
+  }
 }

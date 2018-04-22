@@ -1,15 +1,37 @@
 <section class="jumbotron text-center">
   <div class="container">
     <span *ngIf="tripOffers && tripOffers.length">
-      <div class="trip-offer-thumbnail">
+      <div class="trip-offer-city">
         <img src="/assets/img/{{ searchParameters.destination | lowercase }}.jpg">
       </div>
-      <h1>Our trip offers for <b>{{ searchParameters.destination }}</b></h1>
-      (<i>{{ searchParameters.arrival }}</i> to <i>{{ searchParameters.departure }}</i>, {{ searchParameters.persons }} Persons, from <u>{{ searchParameters.start }}</u>)
+      <h1>Our trip offers for <b>{{ searchParameters.destination }}</b>:</h1>
+      <span class="badge badge-primary">Arrival: {{ searchParameters.arrival }}</span>
+      <span class="badge badge-primary">Departure: {{ searchParameters.departure }}</span>
+      <span class="badge badge-success">Persons: {{ searchParameters.persons }}</span>
+      <span class="badge badge-info">Start: {{ searchParameters.start }}</span>
+      <span class="badge badge-info">Destination: {{ searchParameters.destination }}</span>
+      <span class="badge badge-warning" *ngIf="searchParameters.price">Maximum price: ${{ searchParameters.price }}</span>
 
-      <div *ngFor="let tripOffer of tripOffers" class="trip-offer">
-        <h2>{{ tripOffer.hotel.name }}</h2>
-        <h3><i>{{ tripOffer.price }}$</i> / person</h3>
+      <div *ngFor="let tripOffer of tripOffers" class="row">
+        <div class="col-md-12">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250 trip-offer">
+            <img class="card-img-right flex-auto d-none d-lg-block"
+                 style="width: 250px; height: 250px;"
+                 src="/assets/img/hotel.jpg"
+                 data-holder-rendered="true">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-primary">{{ tripOffer.hotel.city }}</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{ tripOffer.hotel.name }}</a>
+              </h3>
+              <div class="mb-1 text-muted">***</div>
+              <h1 class="card-title pricing-card-title">
+                ${{ tripOffer.price }} <small class="text-muted">/ person</small>
+              </h1>
+              <a href="#">Book now</a>
+            </div>
+          </div>
+        </div>
       </div>
     </span>
 

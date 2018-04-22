@@ -29,7 +29,6 @@ export class TripSearchResultsComponent implements OnInit {
           return;
         }
         this.tripOffers = tripOffers;
-        console.log(this.tripOffers);
       });
   }
 
