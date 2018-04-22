@@ -6,21 +6,19 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CityListComponent } from './components/city-list/city-list.component';
-import { CityThumbnailComponent } from './components/city-thumbnail/city-thumbnail.component';
 import { TripSearchFormComponent } from './components/trip-search-form/trip-search-form.component';
 import {FormsModule} from "@angular/forms";
 import { TripSearchResultsComponent } from './components/trip-search-results/trip-search-results.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookingConfirmationModalComponent } from './components/booking-confirmation-modal/booking-confirmation-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CityListComponent,
-    CityThumbnailComponent,
     TripSearchFormComponent,
     TripSearchResultsComponent,
-    BookingComponent
+    BookingComponent,
+    BookingConfirmationModalComponent
   ],
   imports: [
     NgbModule.forRoot(),
