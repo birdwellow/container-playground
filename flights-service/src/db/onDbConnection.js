@@ -54,7 +54,7 @@ module.exports = function () {
                 "arrivalCity": "Rome",
                 "arrivalTime": "12:15:00",
                 "price": 113,
-                "seats": 3
+                "seats": 13
             },
             {
                 "date": "2018-05-04",
@@ -63,7 +63,7 @@ module.exports = function () {
                 "arrivalCity": "Munich",
                 "arrivalTime": "19:50:00",
                 "price": 247,
-                "seats": 6
+                "seats": 16
             },
 
         ];

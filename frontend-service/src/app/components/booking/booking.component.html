@@ -1,3 +1,20 @@
-<div class="container">
-  booking works!
-</div>
+<section class="jumbotron text-center">
+
+  <div class="container overview" *ngIf="!valid">
+    <h1>You seem to be wrong here... :-(</h1>
+  </div>
+
+  <div class="container overview" *ngIf="valid">
+    <h1>Congratulations!</h1>
+    <div class="alert alert-success">
+      <h2>
+        Your trip to <em>{{ destination }}</em> for <em>{{ persons }}</em> persons has been successfully booked:
+      </h2>
+      <h4>{{ departure | date }} - {{ arrival | date }}</h4>
+      <h4>{{ hotel }}</h4>
+    </div>
+    <hr>
+    <h5>Thank you and goodbye!</h5>
+    <a [routerLink]="['search']">&rarr; Back to start page</a>
+  </div>
+</section>
