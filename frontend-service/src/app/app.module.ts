@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import { TripSearchResultsComponent } from './components/trip-search-results/trip-search-results.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BookingConfirmationModalComponent } from './components/booking-confirmation-modal/booking-confirmation-modal.component';
+import {TripBookingService} from "./services/trip-booking.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { BookingConfirmationModalComponent } from './components/booking-confirma
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TripBookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

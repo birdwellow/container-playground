@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {TripOffer} from "../../model/tripoffer.model";
+import {TripOffer} from "../../model/tripoffer";
+import {TripBookingService} from "../../services/trip-booking.service";
 
 @Component({
   selector: 'trip-search-results',
@@ -10,7 +10,7 @@ import {TripOffer} from "../../model/tripoffer.model";
 })
 export class TripSearchResultsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private tripBookingService: TripBookingService) {
   }
 
   private searchParameters: any = null;
@@ -22,13 +22,9 @@ export class TripSearchResultsComponent implements OnInit {
       this.searchParameters[key] = this.route.snapshot.queryParamMap.get(key);
     }
 
-    this.http
-      .get('http://localhost:8080/trips/offers', {params: this.searchParameters})
+    this.tripBookingService.getTripOffers(this.searchParameters)
       .subscribe((tripOffers: Array<TripOffer>) => {
-        if (!tripOffers) {
-          return;
-        }
-        this.tripOffers = tripOffers;
+        this.tripOffers = tripOffers || [];
       });
   }
 

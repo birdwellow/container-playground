@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {City} from "../../model/city.model";
+import {Component, OnInit} from '@angular/core';
+import {City} from "../../model/city";
 import {NavigationExtras, Router} from "@angular/router";
+import {TripBookingService} from "../../services/trip-booking.service";
 
 @Component({
   selector: 'trip-search-form',
@@ -10,7 +10,7 @@ import {NavigationExtras, Router} from "@angular/router";
 })
 export class TripSearchFormComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private tripBookingService: TripBookingService, private router: Router) { }
 
   start: string = 'Munich';
   destination: string;
@@ -22,7 +22,7 @@ export class TripSearchFormComponent implements OnInit {
   cities: Array<City>;
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/cities').subscribe((cities: Array<City>) => {
+    this.tripBookingService.getAvailableCities().subscribe((cities: Array<City>) => {
       this.cities = cities;
     });
   }
