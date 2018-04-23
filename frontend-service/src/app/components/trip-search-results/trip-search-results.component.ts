@@ -13,8 +13,8 @@ export class TripSearchResultsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tripBookingService: TripBookingService) {
   }
 
-  private searchParameters: any = null;
-  private tripOffers: Array<TripOffer>;
+  searchParameters: any = null;
+  tripOffers: Array<TripOffer>;
 
   ngOnInit() {
     this.searchParameters = {};
